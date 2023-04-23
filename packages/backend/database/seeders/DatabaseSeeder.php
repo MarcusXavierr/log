@@ -19,27 +19,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->create();
+        $this->createProductsAndSales();
     }
 
-
-    private function create()
+    private function createProductsAndSales()
     {
-        $products = Product::factory(10)->create();
-        $data = (new CreateRandomProductSaleData())->createRandomCollection($products);
+        $products = Product::factory(8)->create();
 
-        $sale = Sale::factory()->create([
-            'value' => $data->sum(fn($item) => $item->totalPrice)
-        ]);
-        $data->each(function($dto) use($sale) {
-            ProductSaleItem::create([
-                'sale_id' => $sale->id,
-                'product_id' => $dto->productId,
-                'price_per_unit' => $dto->pricePerUnit,
-                'total_revenue' => $dto->totalPrice,
-                'units_sold' => $dto->units
+        $randomProductSet = create_random_subcollections($products, 3000);
+
+        $randomProductSet->each(function ($products) {
+            $data = (new CreateRandomProductSaleData())->createRandomCollection($products);
+
+            $sale = Sale::factory()->create([
+                'value' => $data->sum(fn($item) => $item->totalRevenue),
             ]);
-        });
 
+            $data->each(function ($dto) use ($sale) {
+                ProductSaleItem::create([
+                    'sale_id' => $sale->id,
+                    'product_id' => $dto->productId,
+                    'price_per_unit' => $dto->pricePerUnit,
+                    'total_revenue' => $dto->totalRevenue,
+                    'units_sold' => $dto->unitsSold,
+                ]);
+            });
+        });
     }
 }
