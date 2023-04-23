@@ -1,0 +1,2 @@
+CREATE DATABASE IF NOT EXISTS logcomex_db;
+CREATE DATABASE IF NOT EXISTS logcomex_db_testing;
