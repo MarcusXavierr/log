@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  php-fpm:
+    build: .docker/php
+    container_name: "test-logcomex-php"
+    entrypoint: /var/docker-config/entrypoint.sh
+    environment:
+      - COMPOSER_MEMORY_LIMIT=2G
+      - ENVIRONMENT=local
+    volumes:
+      - ./.docker:/var/docker-config
+      - ./packages/backend:/var/www
+    networks:
+      - test-logcomex-network
+    user: "1000:www-data"
+
+  nginx:
+    build: .docker/nginx
+    container_name: "test-logcomex-nginx"
+    restart: always
+    tty: true
+    ports:
+      - "3000:3000"
+      - "80:80"
+    volumes:
+      - ./packages/backend:/var/www/
+      - ./packages/frontend/dist:/www/data/
+    networks:
+      - test-logcomex-network
+    depends_on:
+      - php-fpm
+
+  node:
+    build: .docker/node
+    container_name: "test-logcomex-node"
+    restart: always
+    tty: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./packages/frontend/:/var/www/
+    networks:
+      - test-logcomex-network
+    depends_on:
+      - nginx
+
+  mysql:
+    build: ./.docker/mysql
+    command: --innodb-use-native-aio=0 --default-authentication-plugin=mysql_native_password
+    container_name: "test-logcomex-mysql"
+    platform: linux/amd64
+    labels:
+      - database
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./.docker/mysql/dbdata:/var/lib/mysql/
+      - ./.docker/mysql/scripts:/docker-entrypoint-initdb.d
+    networks:
+      - test-logcomex-network
+
+networks:
+  test-logcomex-network:
+    driver: bridge
