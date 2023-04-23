@@ -19,7 +19,7 @@ class Product extends Model
     //TODO test
     public function sales(): BelongsToMany
     {
-        return $this->belongsToMany(ProductSaleItem::class, 'product_sale_items');
+        return $this->belongsToMany(Sale::class, 'product_sale_items');
     }
 
     public function productSaleItem(): HasMany
