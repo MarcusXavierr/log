@@ -16,13 +16,12 @@ class Sale extends Model
         'region'
     ];
 
-    //TODO test this
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'product_sale_items');
     }
 
-    public function productSaleItem(): HasMany
+    public function productSaleItems(): HasMany
     {
         return $this->hasMany(ProductSaleItem::class);
     }

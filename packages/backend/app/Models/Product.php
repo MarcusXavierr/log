@@ -16,13 +16,12 @@ class Product extends Model
         'price'
     ];
 
-    //TODO test
     public function sales(): BelongsToMany
     {
         return $this->belongsToMany(Sale::class, 'product_sale_items');
     }
 
-    public function productSaleItem(): HasMany
+    public function productSaleItems(): HasMany
     {
         return $this->hasMany(ProductSaleItem::class);
     }
