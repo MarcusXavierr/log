@@ -21,9 +21,9 @@ class CreateRandomProductSaleDataTest extends TestCase
     public function test_create_random_item()
     {
         $data = $this->service->createRandomItemData($this->fakeProduct);
-        $this->assertNotEquals(0, $data->units);
+        $this->assertNotEquals(0, $data->unitsSold);
         $this->assertNotEquals(0, $data->pricePerUnit);
-        $this->assertNotEquals(0, $data->totalPrice);
+        $this->assertNotEquals(0, $data->totalRevenue);
         $this->assertNotEquals(0, $data->productId);
     }
 
@@ -37,9 +37,9 @@ class CreateRandomProductSaleDataTest extends TestCase
 
         $this->assertCount($productsCollection->count(), $result);
         $result->each(function ($item) {
-            $this->assertNotEquals(0, $item->units);
+            $this->assertNotEquals(0, $item->unitsSold);
             $this->assertNotEquals(0, $item->pricePerUnit);
-            $this->assertNotEquals(0, $item->totalPrice);
+            $this->assertNotEquals(0, $item->totalRevenue);
             $this->assertNotEquals(0, $item->productId);
         });
     }

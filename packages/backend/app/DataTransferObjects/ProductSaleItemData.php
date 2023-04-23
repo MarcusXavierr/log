@@ -9,9 +9,9 @@ class ProductSaleItemData
     use ReadableProtectedAttribute;
 
     public function __construct(
-        protected int $units = 0,
-        protected int $pricePerUnit = 0,
-        protected int $totalPrice = 0,
+        protected int   $unitsSold = 0,
+        protected int   $pricePerUnit = 0,
+        protected int   $totalRevenue = 0,
         protected mixed $productId = 0
     ) {}
 }

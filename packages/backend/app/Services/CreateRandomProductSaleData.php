@@ -13,9 +13,9 @@ class CreateRandomProductSaleData
         $randomNumberOfUnits = rand(1, $maxUnits);
 
         $data = [
-            'units' => $randomNumberOfUnits,
+            'unitsSold' => $randomNumberOfUnits,
             'pricePerUnit' => $product->price,
-            'totalPrice' => $product->price * $randomNumberOfUnits,
+            'totalRevenue' => $product->price * $randomNumberOfUnits,
             'productId' => $product->id
         ];
 
