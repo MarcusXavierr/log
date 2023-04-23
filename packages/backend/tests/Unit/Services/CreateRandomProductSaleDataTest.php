@@ -24,6 +24,7 @@ class CreateRandomProductSaleDataTest extends TestCase
         $this->assertNotEquals(0, $data->units);
         $this->assertNotEquals(0, $data->pricePerUnit);
         $this->assertNotEquals(0, $data->totalPrice);
+        $this->assertNotEquals(0, $data->productId);
     }
 
     public function test_create_random_collection_of_items()
@@ -39,12 +40,14 @@ class CreateRandomProductSaleDataTest extends TestCase
             $this->assertNotEquals(0, $item->units);
             $this->assertNotEquals(0, $item->pricePerUnit);
             $this->assertNotEquals(0, $item->totalPrice);
+            $this->assertNotEquals(0, $item->productId);
         });
     }
 
     private function makeProduct(int $price, string $name = 'whatever'): Product
     {
         $product = new Product();
+        $product->id = rand(1,100000000);
         $product->name = $name;
         $product->price = $price;
         return $product;

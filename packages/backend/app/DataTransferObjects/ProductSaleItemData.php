@@ -11,6 +11,7 @@ class ProductSaleItemData
     public function __construct(
         protected int $units = 0,
         protected int $pricePerUnit = 0,
-        protected int $totalPrice = 0
+        protected int $totalPrice = 0,
+        protected mixed $productId = 0
     ) {}
 }

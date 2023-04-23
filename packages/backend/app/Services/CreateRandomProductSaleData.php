@@ -16,6 +16,7 @@ class CreateRandomProductSaleData
             'units' => $randomNumberOfUnits,
             'pricePerUnit' => $product->price,
             'totalPrice' => $product->price * $randomNumberOfUnits,
+            'productId' => $product->id
         ];
 
         return new ProductSaleItemData(...$data);
