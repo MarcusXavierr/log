@@ -11,7 +11,7 @@ class FilterOptionsData
 
     public function __construct(
         protected $productName = null,
-        protected $region = null,
+        protected $regions = null,
         protected $startDate = null,
         protected $endDate = null,
         protected $minPrice = null,
