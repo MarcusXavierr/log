@@ -33,6 +33,10 @@ class SoldProductsServiceTest extends DashboardTestCase
         $result = $this->service->getData();
 
         $this->assertCount(3, $result);
+        $result->each(function ($item) {
+            $this->assertNotNull($item->total_revenue);
+            $this->assertNotNull($item->units_sold);
+        });
     }
 
     public function test_filter_by_name()
