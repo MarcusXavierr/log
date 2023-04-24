@@ -20,12 +20,12 @@ class SalesDashboardService
     {
         $query = Sale::select(['id', 'value', 'region', 'created_at']);
 
-        $query = $this->filterByDate($query);
+        $query = $this->filterByDateRange($query);
 
         return $this->filterByRegion($query)->get();
     }
 
-    private function filterByDate(Builder $query): Builder
+    private function filterByDateRange(Builder $query): Builder
     {
         if (! $this->filter->endDate || ! $this->filter->startDate) {
             return $query;

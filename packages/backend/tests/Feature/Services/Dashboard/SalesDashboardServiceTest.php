@@ -4,7 +4,6 @@ namespace Tests\Feature\Services\Dashboard;
 
 use App\DataTransferObjects\FilterOptionsData;
 use App\Services\Dashboard\SalesDashboardService;
-use App\Services\Dashboard\SalesByRegionService;
 use App\Support\Constants\Region;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
