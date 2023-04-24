@@ -3,14 +3,14 @@
 namespace Tests\Feature\Services\Dashboard;
 
 use App\DataTransferObjects\FilterOptionsData;
-use App\Services\Dashboard\SalesByPeriodService;
+use App\Services\Dashboard\SalesDashboardService;
 use App\Services\Dashboard\SalesByRegionService;
 use App\Support\Constants\Region;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\Feature\Services\Dashboard\Abstracts\DashboardTestCase;
 
-class SalesByPeriodServiceTest extends DashboardTestCase
+class SalesDashboardServiceTest extends DashboardTestCase
 {
     use DatabaseTransactions;
 
@@ -29,7 +29,7 @@ class SalesByPeriodServiceTest extends DashboardTestCase
     public function test_get_sales_on_all_period()
     {
         $filter = new FilterOptionsData();
-        $result = (new SalesByPeriodService($filter))->getData();
+        $result = (new SalesDashboardService($filter))->getData();
         $this->assertCount(10, $result);
     }
 
@@ -40,7 +40,7 @@ class SalesByPeriodServiceTest extends DashboardTestCase
             'endDate' => Carbon::now()->subMonths(5)->format('Y-m-d'),
         ]);
 
-        $result = (new SalesByPeriodService($filter))->getData();
+        $result = (new SalesDashboardService($filter))->getData();
         $this->assertCount(5, $result);
 
     }
@@ -51,7 +51,7 @@ class SalesByPeriodServiceTest extends DashboardTestCase
             'regions' => [Region::SOUTH, Region::MIDWEST]
         ]);
 
-        $result = (new SalesByPeriodService($filter))->getData();
+        $result = (new SalesDashboardService($filter))->getData();
         $this->assertCount(5, $result);
 
     }

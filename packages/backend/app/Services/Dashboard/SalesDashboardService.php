@@ -7,7 +7,7 @@ use App\Models\Sale;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
-class SalesByPeriodService
+class SalesDashboardService
 {
     private readonly FilterOptionsData $filter;
 
