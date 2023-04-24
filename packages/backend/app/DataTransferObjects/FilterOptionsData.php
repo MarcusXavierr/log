@@ -15,9 +15,14 @@ class FilterOptionsData
         protected $startDate = null,
         protected $endDate = null,
         protected $minPrice = null,
-        protected $maxPrice = null,
+        protected $maxPrice = null
     ) {
-        $this->startDate = Carbon::create($this->startDate)->startOfDay();
-        $this->endDate = Carbon::create($this->endDate)->endOfDay();
+        if (! is_null($this->startDate)) {
+            $this->startDate = Carbon::create($this->startDate)->startOfDay();
+        }
+
+        if (! is_null($this->endDate)) {
+            $this->endDate = Carbon::create($this->endDate)->endOfDay();
+        }
     }
 }
