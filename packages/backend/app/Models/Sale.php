@@ -13,7 +13,8 @@ class Sale extends Model
 
     protected $fillable = [
         'value',
-        'region'
+        'region',
+        'created_at'
     ];
 
     public function products(): BelongsToMany

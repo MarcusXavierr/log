@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductSaleItem;
 use App\Models\Sale;
 use App\Services\CreateRandomProductSaleData;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -33,6 +34,7 @@ class DatabaseSeeder extends Seeder
 
             $sale = Sale::factory()->create([
                 'value' => $data->sum(fn($item) => $item->totalRevenue),
+                'created_at' => Carbon::today()->subDays(rand(0, 365))
             ]);
 
             $data->each(function ($dto) use ($sale) {
