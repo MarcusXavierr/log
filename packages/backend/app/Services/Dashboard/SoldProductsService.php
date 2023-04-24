@@ -32,7 +32,7 @@ class SoldProductsService
         });
     }
 
-    public function getPaginatedData($itemsPerPage = 10): array
+    public function getPaginatedData($itemsPerPage): array
     {
         $collection = $this->getFilteredData()->paginate($itemsPerPage);
         $items = $collection->map(function ($product) {

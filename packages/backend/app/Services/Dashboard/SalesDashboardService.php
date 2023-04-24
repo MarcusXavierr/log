@@ -22,7 +22,7 @@ class SalesDashboardService
         return $this->getFilteredData()->get();
     }
 
-    public function getPaginatedData($itemsPerPage = 10): LengthAwarePaginator
+    public function getPaginatedData($itemsPerPage): LengthAwarePaginator
     {
         return $this->getFilteredData()->paginate($itemsPerPage);
     }

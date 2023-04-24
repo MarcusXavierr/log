@@ -17,7 +17,7 @@ class DetailController extends Controller
             $filter = new FilterOptionsData($data);
 
             return response()->json([
-                'data' => (new SoldProductsService($filter))->getPaginatedData()
+                'data' => (new SoldProductsService($filter))->getPaginatedData(config('pagination.items_per_page'))
             ]);
         } catch (Exception $e) {
             report($e);
@@ -32,7 +32,7 @@ class DetailController extends Controller
             $filter = new FilterOptionsData($data);
 
             return response()->json([
-                'data' => (new SalesDashboardService($filter))->getPaginatedData()
+                'data' => (new SalesDashboardService($filter))->getPaginatedData(config('pagination.items_per_page'))
             ]);
         } catch (Exception $e) {
             report($e);
