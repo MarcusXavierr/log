@@ -18,13 +18,24 @@ class SoldProductsService
 
     public function getData(): Collection
     {
-        $query = Product::with('productSaleItems:id,units_sold,total_revenue');
+        $query = Product::with('productSaleItems');
 
         $query = $this->filterByName($query);
 
         $query = $this->filterByPriceRange($query);
 
-        return $this->filterByDateRange($query)->get();
+        $collection = $this->filterByDateRange($query)->get();
+
+        return $collection->map(function ($product) {
+            return (object) [
+                'id' => $product->id,
+                'name' => $product->name,
+                'price' => $product->price,
+                'created_at' => $product->created_at,
+                'total_revenue' => $product->productSaleItems->sum(fn ($item) => $item->total_revenue),
+                'units_sold' => $product->productSaleItems->count(),
+            ];
+        });
     }
 
     private function filterByName(Builder $query): Builder
