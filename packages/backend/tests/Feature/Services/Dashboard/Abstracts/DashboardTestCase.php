@@ -6,7 +6,7 @@ use App\Models\Product;
 use App\Models\ProductSaleItem;
 use App\Models\Sale;
 use App\Services\CreateRandomProductSaleData;
-use Carbon\Carbon;
+use App\Support\Constants\Region;
 use Tests\TestCase;
 
 abstract class DashboardTestCase extends TestCase
@@ -18,17 +18,18 @@ abstract class DashboardTestCase extends TestCase
         parent::setUp();
     }
 
-    protected function populateDatabase($numberOfProducts = 8, $numberOfSales = 10)
+    protected function populateDatabase($numberOfSales = 10, $region = Region::NORTH)
     {
-        $products = Product::factory($numberOfProducts)->create();
+        $products = Product::factory(5)->create();
 
         $randomProductSet = create_random_subcollections($products, $numberOfSales);
 
-        $randomProductSet->each(function ($products) {
+        $randomProductSet->each(function ($products) use ($region) {
             $data = (new CreateRandomProductSaleData())->createRandomCollection($products);
 
             $sale = Sale::factory()->create([
                 'value' => $data->sum(fn($item) => $item->totalRevenue),
+                'region' => $region
             ]);
 
             $data->each(function ($dto) use ($sale) {
