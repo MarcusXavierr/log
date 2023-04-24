@@ -18,13 +18,7 @@ class SoldProductsService
 
     public function getData(): Collection
     {
-        $query = Product::with('productSaleItems');
-
-        $query = $this->filterByName($query);
-
-        $query = $this->filterByPriceRange($query);
-
-        $collection = $this->filterByDateRange($query)->get();
+        $collection = $this->getFilteredData()->get();
 
         return $collection->map(function ($product) {
             return (object) [
@@ -36,6 +30,39 @@ class SoldProductsService
                 'units_sold' => $product->productSaleItems->count(),
             ];
         });
+    }
+
+    public function getPaginatedData($itemsPerPage = 10): array
+    {
+        $collection = $this->getFilteredData()->paginate($itemsPerPage);
+        $items = $collection->map(function ($product) {
+            return (object) [
+                'id' => $product->id,
+                'name' => $product->name,
+                'price' => $product->price,
+                'created_at' => $product->created_at,
+                'total_revenue' => $product->productSaleItems->sum(fn ($item) => $item->total_revenue),
+                'units_sold' => $product->productSaleItems->count(),
+            ];
+        });
+
+        return [
+            'perPage' => $collection->perPage(),
+            'currentPage' => $collection->currentPage(),
+            'total' => $collection->total(),
+            'items' => $items,
+        ];
+    }
+
+    private function getFilteredData(): Builder
+    {
+        $query = Product::with('productSaleItems');
+
+        $query = $this->filterByName($query);
+
+        $query = $this->filterByPriceRange($query);
+
+        return $this->filterByDateRange($query);
     }
 
     private function filterByName(Builder $query): Builder
