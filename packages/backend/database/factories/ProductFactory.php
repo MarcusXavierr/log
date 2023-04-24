@@ -21,6 +21,7 @@ class ProductFactory extends Factory
 
         return [
             'name' => "{$this->faker->productName} - " . random_int(1,100),
+            'description' => $this->faker->text(30),
             'price' => $this->faker->numberBetween(1000, 10000),
         ];
     }
