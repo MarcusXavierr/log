@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 
 class SoldProductsService
 {
-    private FilterOptionsData $filter;
+    private readonly FilterOptionsData $filter;
 
     public function __construct(FilterOptionsData $filter)
     {
@@ -50,7 +50,7 @@ class SoldProductsService
             'perPage' => $collection->perPage(),
             'currentPage' => $collection->currentPage(),
             'total' => $collection->total(),
-            'items' => $items,
+            'data' => $items,
         ];
     }
 

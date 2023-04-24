@@ -4,6 +4,7 @@ namespace App\Services\Dashboard;
 
 use App\DataTransferObjects\FilterOptionsData;
 use App\Models\Sale;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
@@ -18,11 +19,21 @@ class SalesDashboardService
 
     public function getData(): Collection
     {
+        return $this->getFilteredData()->get();
+    }
+
+    public function getPaginatedData($itemsPerPage = 10): LengthAwarePaginator
+    {
+        return $this->getFilteredData()->paginate($itemsPerPage);
+    }
+
+    private function getFilteredData(): Builder
+    {
         $query = Sale::select(['id', 'value', 'region', 'created_at']);
 
         $query = $this->filterByDateRange($query);
 
-        return $this->filterByRegion($query)->get();
+        return $this->filterByRegion($query);
     }
 
     private function filterByDateRange(Builder $query): Builder
