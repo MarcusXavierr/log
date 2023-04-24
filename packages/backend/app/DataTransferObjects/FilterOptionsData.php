@@ -14,7 +14,8 @@ class FilterOptionsData
         protected $region = null,
         protected $startDate = null,
         protected $endDate = null,
-        protected $price = null,
+        protected $minPrice = null,
+        protected $maxPrice = null,
     ) {
         $this->startDate = Carbon::create($this->startDate)->startOfDay();
         $this->endDate = Carbon::create($this->endDate)->endOfDay();
