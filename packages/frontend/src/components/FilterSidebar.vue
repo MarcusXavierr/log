@@ -16,7 +16,13 @@
 
         <div class="p-2">
           <label for="">Range de preços</label>
-          <VueSlider v-model="filter.priceRange" />
+          <VueSlider
+            v-model="filter.priceRange"
+            :process-style="{ backgroundColor: '#661BE6' }"
+            :tooltip-style="{ backgroundColor: '#FB8F1C', borderColor: '#FB8F1C' }"
+            :dot-style="{ backgroundColor: '#FB8F1C', borderColor: '#FB8F1C' }"
+          >
+          </VueSlider>
         </div>
       </div>
 
@@ -26,12 +32,7 @@
           <label for="">Região</label>
           <div v-for="region in filter.regions" :key="region.value">
             <div class="box-input">
-              <input
-                type="checkbox"
-                class="checkbox"
-                v-model="region.checked"
-                :id="region.value"
-              />
+              <input type="checkbox" class="checkbox checkbox-primary" v-model="region.checked" :id="region.value" />
               <span>{{ region.name }}</span>
             </div>
           </div>
@@ -49,7 +50,6 @@
           />
         </div>
       </div>
-
 
       <div class="flex gap-4 justify-between">
         <button class="btn" @click="clearFilter()">Limpar filtros</button>
