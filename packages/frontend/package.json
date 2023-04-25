@@ -13,9 +13,15 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "pinia": "^2.0.32",
+    "@headlessui/vue": "^1.7.13",
+    "@heroicons/vue": "^2.0.17",
+    "@vuepic/vue-datepicker": "^4.5.1",
+    "daisyui": "^2.51.6",
+    "moment": "^2.29.4",
     "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "vue-slider-component": "^4.1.0-beta.7",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
