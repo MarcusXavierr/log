@@ -14,7 +14,7 @@ class DetailController extends Controller
     {
         try {
             $data = $request->validated();
-            $filter = new FilterOptionsData($data);
+            $filter = new FilterOptionsData(...$data);
 
             return response()->json([
                 'data' => (new SoldProductsService($filter))->getPaginatedData(config('pagination.items_per_page'))
@@ -29,7 +29,7 @@ class DetailController extends Controller
     {
         try {
             $data = $request->validated();
-            $filter = new FilterOptionsData($data);
+            $filter = new FilterOptionsData(...$data);
 
             return response()->json([
                 'data' => (new SalesDashboardService($filter))->getPaginatedData(config('pagination.items_per_page'))
