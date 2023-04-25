@@ -24,12 +24,12 @@ class DataFilterRequest extends FormRequest
     public function rules()
     {
         return [
-            'productName' => 'string',
-            'region' => 'string',
-            'startDate' => 'date',
-            'endDate' => 'date',
-            'minPrice' => 'int',
-            'maxPrice' => 'int',
+            'productName' => 'nullable|string',
+            'regions' => 'array',
+            'startDate' => 'nullable|date',
+            'endDate' => 'nullable|date',
+            'minPrice' => 'string',
+            'maxPrice' => 'string',
         ];
     }
 }
