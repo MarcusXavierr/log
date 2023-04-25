@@ -90,13 +90,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions([ 'getDashboardData' ]),
-    ...mapMutations([ 'clearStoreFilter', 'setStoreFilter' ]),
+    ...mapActions(['getDashboardData']),
+    ...mapMutations(['clearStoreFilter', 'setStoreFilter']),
     clearFilter() {
       this.filter.date = null
       this.filter.priceRange = [1, 100]
       this.filter.productName = ''
-      this.filter.regions = this.filter.regions.map(region => ({ ...region, checked: false }))
+      this.filter.regions = this.filter.regions.map((region) => ({ ...region, checked: false }))
       this.clearStoreFilter()
     },
     setFilter() {
@@ -104,7 +104,14 @@ export default {
       const [minPrice, maxPrice] = this.getFormatedPriceRange()
       const regions = this.getFormatedRegions()
 
-      this.setStoreFilter({ productName: this.filter.productName, startDate, endDate, minPrice, maxPrice, regions })
+      this.setStoreFilter({
+        productName: this.filter.productName,
+        startDate,
+        endDate,
+        minPrice,
+        maxPrice,
+        regions
+      })
       this.getDashboardData()
     },
     getFormatedDate() {
@@ -118,7 +125,7 @@ export default {
       return [startDate, endDate]
     },
     getFormatedRegions() {
-        return this.filter.regions.filter(region => region.checked).map(region => region.value)
+      return this.filter.regions.filter((region) => region.checked).map((region) => region.value)
     },
     getFormatedPriceRange() {
       return [this.filter.priceRange[0] * 100, this.filter.priceRange[1] * 100]
