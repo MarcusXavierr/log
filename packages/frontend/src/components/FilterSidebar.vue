@@ -2,46 +2,54 @@
   <div class="drawer-side">
     <label for="sidebar" class="drawer-overlay"></label>
     <ul class="menu p-6 w-80 bg-base-100 text-base-content flex flex-col gap-4">
-      <h3 class="text-2xl">Filtros</h3>
-      <div>
-        <label for="">Nome do produto</label>
-        <input
-          type="text"
-          class="input input-bordered w-full max-w-xs"
-          v-model="filter.productName"
-        />
-      </div>
-      <div class="flex flex-col gap-1">
-        <label for="">Região</label>
-        <div v-for="region in filter.regions" :key="region.value">
-          <div class="box-input">
-            <input
-              type="checkbox"
-              class="checkbox"
-              v-model="region.checked"
-              :id="region.value"
-            />
-            <span>{{ region.name }}</span>
-          </div>
+      <h3 class="text-3xl">Filtros</h3>
+      <div class="flex flex-col gap-4">
+        <h4 class="text-xl">Filtros produto</h4>
+        <div>
+          <label for="">Nome</label>
+          <input
+            type="text"
+            class="input input-bordered w-full max-w-xs"
+            v-model="filter.productName"
+          />
+        </div>
+
+        <div class="p-2">
+          <label for="">Range de preços</label>
+          <VueSlider v-model="filter.priceRange" />
         </div>
       </div>
 
-      <div>
-        <label for=""> Data de criação </label>
-        <Datepicker
-          v-model="filter.date"
-          range
-          locale="pt-BR"
-          cancel-text="Cancelar"
-          select-text="Selecionar"
-          :enable-time-picker="false"
-        />
+      <div class="flex flex-col gap-4">
+        <h4 class="text-xl">Filtros Vendas</h4>
+        <div class="flex flex-col gap-1">
+          <label for="">Região</label>
+          <div v-for="region in filter.regions" :key="region.value">
+            <div class="box-input">
+              <input
+                type="checkbox"
+                class="checkbox"
+                v-model="region.checked"
+                :id="region.value"
+              />
+              <span>{{ region.name }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label for=""> Data de criação </label>
+          <Datepicker
+            v-model="filter.date"
+            range
+            locale="pt-BR"
+            cancel-text="Cancelar"
+            select-text="Selecionar"
+            :enable-time-picker="false"
+          />
+        </div>
       </div>
 
-      <div class="p-2">
-        <label for="">Range de preços</label>
-        <VueSlider v-model="filter.priceRange" />
-      </div>
 
       <div class="flex gap-4 justify-between">
         <button class="btn" @click="clearFilter()">Limpar filtros</button>
