@@ -60,9 +60,7 @@ class SoldProductsService
 
         $query = $this->filterByName($query);
 
-        $query = $this->filterByPriceRange($query);
-
-        return $this->filterByDateRange($query);
+        return $this->filterByPriceRange($query);
     }
 
     private function filterByName(Builder $query): Builder

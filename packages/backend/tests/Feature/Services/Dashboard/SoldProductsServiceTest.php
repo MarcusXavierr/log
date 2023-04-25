@@ -64,18 +64,4 @@ class SoldProductsServiceTest extends DashboardTestCase
         $this->assertCount(1, $result);
         $this->assertEquals($this->productTwo->id, $result[0]->id);
     }
-
-    public function test_filter_by_date_range()
-    {
-        $filter = new FilterOptionsData(...[
-            'startDate' => Carbon::now()->subYear()->format('Y-m-d'),
-            'endDate' => Carbon::now()->subMonths(5)->format('Y-m-d'),
-        ]);
-
-        $this->service = new SoldProductsService($filter);
-        $result = $this->service->getData();
-
-        $this->assertCount(1, $result);
-        $this->assertEquals($this->productOne->id, $result[0]->id);
-    }
 }
