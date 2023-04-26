@@ -30,7 +30,7 @@ export default {
   name: 'DetailPage',
   data() {
     return {
-      productsData: []
+      productsData: [] as any[]
     }
   },
   computed: {
@@ -39,8 +39,8 @@ export default {
   methods: {
     ...mapActions(['getProductsDetails']),
     ...mapMutations(['goToDashboard']),
-    populateTable({ data }) {
-      this.productsData = data.data
+    populateTable(response: any) {
+      this.productsData = response.data.data
     }
   },
   watch: {
