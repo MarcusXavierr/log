@@ -1,8 +1,8 @@
 <template>
   <aside class="drawer drawer-mobile" data-theme="light">
     <input id="sidebar" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content p-4">
-      <label for="sidebar" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+    <div class="drawer-content p-4 flex flex-col gap-6">
+      <label for="sidebar" class="btn btn-primary drawer-button lg:hidden">Filtros</label>
       <slot>Void</slot>
     </div>
     <FilterSidebar />
