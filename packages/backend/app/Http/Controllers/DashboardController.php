@@ -17,7 +17,7 @@ class DashboardController extends Controller
             $filter = new FilterOptionsData(...$data);
 
             return response()->json([
-                'sales_data' => (new SalesDashboardService($filter))->getData(),
+                // 'sales_data' => (new SalesDashboardService($filter))->getData(),
                 'products_data' => (new SoldProductsService($filter))->getData()
             ]);
         } catch(Exception $e) {
