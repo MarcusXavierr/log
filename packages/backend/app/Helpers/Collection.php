@@ -13,7 +13,7 @@ if (! function_exists('create_random_subcollections')) {
             return collect();
         }
 
-        $randomSubCollectionSize = rand(1, $collection->count());
+        $randomSubCollectionSize = rand(1, ceil($collection->count() / 3));
         $subcollection = $collection->random($randomSubCollectionSize);
 
         return create_random_subcollections($collection, $newCollectionSize - 1)->prepend($subcollection);
