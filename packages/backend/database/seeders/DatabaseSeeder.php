@@ -36,10 +36,6 @@ class DatabaseSeeder extends Seeder
                 'value' => $data->sum(fn($item) => $item->totalRevenue),
             ]);
 
-            $sale->update([
-                'created_at' => Carbon::today()->subDays(rand(0, 365))
-            ]);
-
             $data->each(function ($dto) use ($sale) {
                 ProductSaleItem::create([
                     'sale_id' => $sale->id,
