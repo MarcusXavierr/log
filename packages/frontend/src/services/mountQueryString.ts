@@ -1,15 +1,15 @@
-export function mountQueryString(state: State): string {
-  return `?${createUrlSearchParams(state)}${mountArrayQueryString(state.regions)}`
+export function mountQueryString(filter: Filter): string {
+  return `?${createUrlSearchParams(filter)}${mountArrayQueryString(filter.regions)}`
 }
 
-function createUrlSearchParams(state: State) {
+function createUrlSearchParams(state: Filter) {
   const copy = { ...state }
   delete copy.regions
 
   const searchParams = new URLSearchParams()
 
   Object.keys(copy).forEach((key: any) => {
-    const data = state[key as keyof State] as string
+    const data = state[key as keyof Filter] as string
     if (data == null) {
       return
     }
