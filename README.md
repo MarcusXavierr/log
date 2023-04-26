@@ -22,6 +22,9 @@ A ideia desse projeto é ser um mini BI de vendas, onde são mostrados gráficos
     ...
 ```
 
+Dentro da pasta .docker tem todas as configurações usadas pelo docker, ou seja, os Dockerfiles, configuração do nginx, script de entrypoint do PHP, etc.
+
+
 ## Como rodar o projeto
 O setup desse projeto pode ser feito usando o docker. Na raiz do projeto eu deixei um arquivo `setup.sh` contendo os comandos necessário para subir o projeto. Colocarei o conteúdo dele aqui e explicarei quando for necessário fazer mais alguma coisa
 
