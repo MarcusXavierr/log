@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-primary">
+  <nav class="bg-primary sticky top-0 z-50">
     <img :src="logo" alt="a beautiful logo"/>
   </nav>
 </template>
