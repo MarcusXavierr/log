@@ -20,7 +20,7 @@ class ProductFactory extends Factory
         $this->faker->addProvider(new Commerce($this->faker));
 
         return [
-            'name' => "{$this->faker->productName} - " . random_int(1,100),
+            'name' => array_pop(explode(' ', $this->faker->productName)),
             'description' => $this->faker->text(30),
             'price' => $this->faker->numberBetween(1000, 10000),
         ];
