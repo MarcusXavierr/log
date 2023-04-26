@@ -9,7 +9,8 @@ https://user-images.githubusercontent.com/59923581/234616556-8a0549bf-ac71-4b55-
 
 
 
-A ideia desse projeto é ser um mini BI de vendas, onde são mostrados gráficos, e caso o usuário clique no gráfico, é redirecionado para uma tela de detalhamento
+A ideia desse projeto é ser um mini BI de vendas, onde são mostrados gráficos, e caso o usuário clique no gráfico, é redirecionado para uma tela de detalhamento. O backend tem endpoints pra trazer os dados das vendas e produtos (pra montar na dashboard) e pra trazer a listagem paginada de itens na tela de detalhamento.
+Na front tem a tela da dashboard com todos os filtros funcionando e os gráficos dos produtos. Ficou faltando somente implementar os gráficos das vendas por região, mas aí estouraria o prazo.
 
 **Só é preciso ficar atento a uma coisa**, caso você não esteja usando um computador com processador `ARM`, não é necessário deixar o parâmetro `platform: linux/amd64` no arquivo docker-compose.yml, nesse trecho da configuração do mysql
 ```docker
