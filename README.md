@@ -1,5 +1,16 @@
 ## Mini BI de vendas
 
+
+https://user-images.githubusercontent.com/59923581/234614710-8f9816a5-ff1b-4eb6-bf54-a1eca1c33f3c.mp4
+
+
+
+https://user-images.githubusercontent.com/59923581/234616556-8a0549bf-ac71-4b55-af82-aa021cb4a477.mp4
+
+
+
+
+
 A ideia desse projeto é ser um mini BI de vendas, onde são mostrados gráficos, e caso o usuário clique no gráfico, é redirecionado para uma tela de detalhamento
 
 **Só é preciso ficar atento a uma coisa**, caso você não esteja usando um computador com processador `arm`, não é necessário deixar o parâmetro `` no arquivo docker-compose.yml, nesse trecho da configuração do mysql
