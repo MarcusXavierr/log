@@ -5,7 +5,7 @@ echo "Instalando dependencias do frontend"
 docker exec -it -u root test-logcomex-node npm install
 
 echo "Buildando o frontend"
-docker exec -it -u root test-logcomex-node npm run build
+docker exec -it -u root test-logcomex-node npm run build-only
 
 echo "Instalando dependencias do backend"
 docker exec -it -u root test-logcomex-php composer install

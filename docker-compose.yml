@@ -61,6 +61,7 @@ services:
       - ./.docker/mysql/scripts:/docker-entrypoint-initdb.d
     networks:
       - test-logcomex-network
+    user: "root"
 
 networks:
   test-logcomex-network:
