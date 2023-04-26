@@ -21,9 +21,9 @@
     <BarProductUnitsSoldGraph
       chart-type="bar"
       chart-id="bar-chart"
-      label="Valor de vendas por produto"
-      :data="totalRevenueProducts.data"
-      :names="totalRevenueProducts.labels"
+      label="Quantidade de produtos vendidos"
+      :data="totalUnitsSoldPerProduct.data"
+      :names="totalUnitsSoldPerProduct.labels"
       :key="chartKey"
       @click="goToDetailPage()"
     />
