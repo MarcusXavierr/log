@@ -7,11 +7,12 @@ use App\Services\Dashboard\SalesDashboardService;
 use App\Support\Constants\Region;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Services\Dashboard\Abstracts\DashboardTestCase;
 
 class SalesDashboardServiceTest extends DashboardTestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
 
     protected function setUp(): void
     {

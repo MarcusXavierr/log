@@ -7,11 +7,12 @@ use App\Models\Product;
 use App\Services\Dashboard\SoldProductsService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Services\Dashboard\Abstracts\DashboardTestCase;
 
 class SoldProductsServiceTest extends DashboardTestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
 
     protected function setUp(): void
     {
