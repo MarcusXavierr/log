@@ -17,7 +17,7 @@
           <td>{{ product.name }}</td>
           <td>R${{ product.price / 100 }}</td>
           <td>{{ product.units_sold }}</td>
-          <td>R${{ product.total_revenue }}</td>
+          <td>R${{ product.total_revenue / 100 }}</td>
         </tr>
       </tbody>
     </table>
